@@ -74,5 +74,51 @@ We can also bind or partially apply functions:
     const doFun2 = doit2(fun2); // since doit2 returns a function doFun2 is a function
     document.writeln( doFun2(10) ); // -> 10
 
+## Functional Programming (lambda calculus)
+
+beta-reduction
+
+      ((λa.a)λb.λc.b)(x)λe.f
+    = ((λa.a) λbc.b )(x)λe.f  // a = λbc.b
+    = (    λbc.b    )(x)λe.f  // b = x
+    = (     λc.x    )   λe.f  // c = λe.f
+    =          x
+
+Combinators (function with no free variables)
+
+    λa.a        ->  I  = a => a                     Idiot (identity)
+    λf.ff       ->  M  = f => f(f)                  Mockingbird (self-application)
+        M(I) === I
+        M(M) === M(M) === ...
+    λab.a       ->  K  = a => b => a                Kestrel (first)
+    λab.b       ->  KI = a => b => b                Kite (second)
+        KI === K(I)
+    λfab.fba    ->  C  = f => a => b => f(b)(a)     Cardinal ()
+        C(K) === KI
+        C(K)(I)(M) === M
+
+Bools
+
+    const res = bool ? exp1 : exp2
+    const T = K
+    const F = KI
+    
+    !p
+    const not = p => p(F)(T)
+        === C
+    
+    p && q
+    const and = p => q => p(q)(T)
+    const and = p => q => p(q)(p)
+
+    p || q
+    const or = p => q => p(T)(q)
+    const or = p => q => p(p)(q)
+        === M
+    
+    p == q
+    const beq = p => q => p(q(T)(F))(q(F)(T))
+    const beq = p => q => p(q)(not(q))
+
 ## Snake
 Works!
