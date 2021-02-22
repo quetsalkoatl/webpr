@@ -37,7 +37,7 @@ There is no such thing as "overloading" functions in JS:
     // first function is ignored, there is no way to have two function with the same name!
     function fun2()    { return 1; } // this is ignored!
     function fun2(arg) { return arg; }
-    document.writeln( fun2() );    // -> undefined
+    document.writeln( fun2() );    // -> undefined (because return value is never set)
     document.writeln( fun2(42) );  // -> 42
 
 Be careful, don't forget the return statement. There is no error when you forget it:
