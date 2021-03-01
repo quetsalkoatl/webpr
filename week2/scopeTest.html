@@ -6,10 +6,43 @@
 </head>
 <body>
     <script>
+        const x = 1;
+        // code starts here
+        function foo() {
+            const x = 0;
+            console.log(x);
+        }
+        foo();
+        (function () {
+            const x = 2;
+            console.log(x);
+        })();
+        (() => {
+            const x = 3;
+            console.log(x);
+        })();
+        (_ => {
+            const x = 4;
+            console.log(x);
+        })();
+        {
+            const x = 5;
+            console.log(x);
+        }
+        // code ends here
+        document.writeln(x === 1);
 
+        const id    = x => x;
+        const konst = x => y => x;
+        const kite  = x => y => y;
+        const kite2 = x => id;
+        const kite3 = x => konst(id)(x);
+        const kite4 = konst(id);
 
-
-
+        document.writeln(id(id) === id);
+        document.writeln(konst(id)(undefined) === id)
+        document.writeln(konst(konst)(undefined) === konst)
+        document.writeln(kite(undefined)(id) === id )
 
     </script>
 </body>

@@ -23,17 +23,18 @@ function snakeEquals(a, b) {
 
 function changeDirection(orientation) {
     let curr = orientation.indexOf(direction);
-    direction = orientation[(curr+1 % 4)];
+    direction = orientation[curr + 1]; // works (without mod) because north is in the array twice
 }
 
 function start() {
     const canvas  = document.getElementById("canvas");
     const context = canvas.getContext("2d");
 
-    const rightArrow = 39;
-    const leftArrow  = 37;
+    const rightArrow = "ArrowRight";
+    const leftArrow  = "ArrowLeft";
     window.onkeydown = evt => {
-        const orientation = (evt.keyCode === rightArrow) ? clockwise : countercw;
+        console.log(evt);
+        const orientation = (evt.code === rightArrow) ? clockwise : countercw;
         changeDirection(orientation);
     };
 
