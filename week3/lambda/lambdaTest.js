@@ -36,14 +36,14 @@ ok.push( or(T)(T) === T );
 // flip(f)(x)(y) = f(y)(x)
 
 // not
-// ok.push( not(T) === F );
-// ok.push( not(F) === T );
+ok.push( not(T) === F );
+ok.push( not(F) === T );
 
 // beq
 ok.push( beq(T)(T) === T );
 ok.push( beq(T)(F) === F );
-// ok.push( beq(F)(T) === F );
-// ok.push( beq(F)(F) === T );
+ok.push( beq(F)(T) === F );
+ok.push( beq(F)(F) === T );
 
 // Pair
 

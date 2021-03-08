@@ -16,8 +16,8 @@ const and = p => q => p(q)(p);
 // const or = p => q => p(T      )(q      );
 const or = p => q => p(p)(q);
 
-// const not = p => p(F)(T);
-const not = flip;
+const not = p => p(F)(T);
+// const not = flip;
 
 // const beq = p => q => p(q(T)(F))(q(F)(T));
 const beq = p => q => p(q)(not(q));
