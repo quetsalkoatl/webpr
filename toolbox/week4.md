@@ -1,4 +1,4 @@
-# Week 3 (Higher Order Functions)
+# Week 4 (Higher Order Functions)
 
 ## spread/rest
 
