@@ -9,7 +9,14 @@ function start() {
     const canvas       = document.getElementById('canvas');
     const context      = canvas.getContext("2d");
 
-    // todo: how to display?
+    // const displayF = x => eval(userFunction.value);
+    let displayF = Function('x', 'return ' + userFunction.value);
+
+    userFunction.onchange = _ => {
+        displayF = Function('x', 'return ' + userFunction.value);
+        display(context, displayF);
+    }
+    display(context, displayF);
 
 }
 

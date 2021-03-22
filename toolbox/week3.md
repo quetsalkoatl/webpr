@@ -96,9 +96,9 @@ The long running function should only be called if it is actually logged (lazy).
     const either = f => err => succ => f(err)(succ);
     
     const safeDiv = num => divisor =>
-    divisor === 0
-        ? Left("schlecht!")
-        : Right(num / divisor);
+        divisor === 0
+            ? Left("schlecht!")
+            : Right(num / divisor);
     
     either( safeDiv(1)(0) )
         ( x => console.error(x))
