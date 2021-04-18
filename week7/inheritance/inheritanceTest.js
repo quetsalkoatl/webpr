@@ -87,6 +87,7 @@
             work:    () => worklog.push(worker.work())
         };
 
+        // todo: ... (we don't use new, wo we ahve to set the proto manually)
         Object.setPrototypeOf(result, Person.prototype);
 
         return result
