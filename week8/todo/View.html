@@ -6,10 +6,13 @@
     <style>
         body {
             background: burlywood;
-            font-family: "Helvetica Neue", "sans-serif";
+            font-family: "Helvetica", "sans-serif";
         }
         div {
             padding-left: 1em;
+        }
+        label {
+            display: none;
         }
     </style>
 </head>
@@ -18,7 +21,12 @@
 <button onclick="addTodo()">Add Todo</button>
 
 <table>
-    <thead></thead>
+    <thead>
+        <tr>
+            <th>What's todo?</th>
+            <th>Is it done?</th>
+        </tr>
+    </thead>
     <tbody id="todoContainer">
 
     </tbody>
