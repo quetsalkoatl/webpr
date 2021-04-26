@@ -25,3 +25,9 @@ Protocols are sets of instructions one has to do every time for certain actions:
 Protocols can usually be extracted or abstracted in methods to avoid duplicated code
 
 ## UI "Framework"
+
+(see week9/Milestone 0-4)
+
+Milestone 0 is working and okay for such a small application. But layout, UI handling and logic are tightly coupled together.
+
+Milestone 1 (Reorganisation). We want to improve clarity and reduce coupling by splitting responsibilities.
