@@ -1,4 +1,4 @@
-# Week 6 (objects)
+# Week 6 (Objects)
 
 ## Array.from(...)
 

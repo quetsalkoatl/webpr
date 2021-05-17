@@ -1,4 +1,4 @@
-# Week 7 (classes)
+# Week 7 (Classes)
 
 ## Strings
 

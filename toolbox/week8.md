@@ -1,4 +1,4 @@
-# Week 8 (programming)
+# Week 8 (Programming)
 
 ## Goodie
 
