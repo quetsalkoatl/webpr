@@ -6,6 +6,7 @@ const Formulae =  {
 };
 
 // todo: we need some storage for the data flow variables that back the cell values
+const DFcache = {};
 
 const cols = ["A","B","C"];
 const rows = ["1","2","3"];
@@ -26,11 +27,13 @@ function fillTable(container) {
             input.setAttribute("ID", cellid);
 
             // todo: set the cell value into the respective data flow variable
+            DFcache[cellid] = df(input);
 
             input.onchange = evt => {
                 Formulae[cellid] = input.value;
 
                 // todo: set the cell value into the respective data flow variable
+                DFcache[cellid] = df(input);
 
                 refresh();
             };
@@ -48,6 +51,7 @@ function refresh() {
         rows.forEach( row => {
             let cellid  = "" + col + row;
             let input   = document.getElementById(cellid);
+            DFcache[cellid] = df(input);
             input.value = n(input);
         });
     });
@@ -56,6 +60,9 @@ function refresh() {
 function df(input) {
 
     // todo: return a new data flow variable that captures the numeric value of the input field's formula
+    return DataFlowVariable(() => {
+        return Number(eval(Formulae[input.id]));
+    });
 
 }
 
@@ -63,5 +70,6 @@ function df(input) {
 function n(input) {
 
     // todo: return the value of the data flow variable that backs the input field
+    return DFcache[input.id]();
 
 }
