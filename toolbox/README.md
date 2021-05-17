@@ -1,4 +1,7 @@
 # WEBPR Toolbox
+
+Summary of the WEBPR module at the FHNW. There is one file per lecture.
+
 ## Table of contents
 
 1. [Introduction](week01.md)
