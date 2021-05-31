@@ -25,12 +25,14 @@ test("util-refresher", assert => {
         acc.push(current);
         return acc;
     }, []);
+
     assert.is(ary.length , cpy.length);
     assert.is(ary[0]     , cpy[0]);
     assert.is(ary[ary.length-1]    , cpy[ary.length-1]);
 
     // array.reverse mit reduce
     const rvs = ary.reduce((acc, current) => (acc.unshift(current), acc), []);
+
     assert.is(ary.length            , rvs.length);
     assert.is(ary[0]                , rvs[ary.length-1]);
     assert.is(ary[ary.length-1]     , rvs[0]);
