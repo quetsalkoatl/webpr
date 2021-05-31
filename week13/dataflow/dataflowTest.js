@@ -1,6 +1,9 @@
 // requires dataflow.js
+import { Scheduler, DataFlowVariable } from "./dataflow.js";
+import { Suite } from "../util/test.js";
 
-test("dataflow-scheduler", assert => {
+const dataflowSuite = Suite("dataflow");
+dataflowSuite.add("scheduler", assert => {
 
     const result = [];
 
@@ -27,7 +30,7 @@ test("dataflow-scheduler", assert => {
 
 });
 
-test("dataflow-value", assert => {
+dataflowSuite.add("value", assert => {
 
     const z = DataFlowVariable(() => x() + y());   // z depends on x and y, which are set later...
     const x = DataFlowVariable(() => y());         // x depends on y, which is set later...
@@ -39,7 +42,7 @@ test("dataflow-value", assert => {
 
 });
 
-test("dataflow-cache", assert => { // value must be set at most once
+dataflowSuite.add("cache", assert => { // value must be set at most once
 
     let counter = 0;
     const x = DataFlowVariable(() => {
@@ -54,4 +57,6 @@ test("dataflow-cache", assert => { // value must be set at most once
     assert.is(counter, 1);
 
 });
+
+dataflowSuite.run();
 

@@ -1,7 +1,11 @@
 // requires ../util/test.js
 // requires excel.js
+import { startExcel, refresh, n } from "./excel.js";
+import { Suite } from '../util/test.js'
 
-test("excel", assert => {
+const excelSuite = Suite('excel');
+
+excelSuite.add("excel", assert => {
 
     let tbody = document.createElement("TBODY");
     tbody.setAttribute("ID","dataContainer");
@@ -15,3 +19,5 @@ test("excel", assert => {
     body.removeChild(tbody);
 
 });
+
+excelSuite.run();

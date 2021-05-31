@@ -63,7 +63,7 @@ test("util-refresher", assert => {
 
     // const foo = ["a", "b", "c", "d", "b", "c", "d"];
     // foo.find( it => {
-    //     console.log(it);
+    //     console.log(it); // don't do side effects in these functional "loops"
     //     return it === "d";
     // });
 

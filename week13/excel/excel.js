@@ -1,3 +1,6 @@
+import { DataFlowVariable } from "../dataflow/dataflow.js";
+
+export { startExcel, refresh, n };
 
 const Formulae =  {
     A1: 'n(B3) - n(B2)', B1: '1',              C1: 'n(A1) + n(B1)',

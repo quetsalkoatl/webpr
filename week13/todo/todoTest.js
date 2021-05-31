@@ -1,15 +1,20 @@
 // requires todo.js
 // requires /util/test.js
 
+import { TodoController, TodoItemsView, TodoTotalView, TodoOpenView } from "./todo.js";
+import { Suite } from '../util/test.js'
+
 // now, we could become much more fine-granular if we wanted
 
-test("todo-crud", assert => {
+const todoSuite = Suite("todo");
+
+todoSuite.add("crud", assert => {
 
     // setup
-    todoContainer = document.createElement("div");
-    numberOfTasks = document.createElement("span");
+    const todoContainer = document.createElement("div");
+    const numberOfTasks = document.createElement("span");
     numberOfTasks.innerText = '0';
-    openTasks = document.createElement("span");
+    const openTasks = document.createElement("span");
     openTasks.innerText = '0';
 
     const todoController = TodoController();
@@ -20,32 +25,32 @@ test("todo-crud", assert => {
 
     const elementsPerRow = 3;
 
-    assert.equals(todoContainer.children.length, 0*elementsPerRow);
-    assert.equals(numberOfTasks.innerText, '0');
-    assert.equals(openTasks.innerText, '0');
+    assert.is(todoContainer.children.length, 0*elementsPerRow);
+    assert.is(numberOfTasks.innerText, '0');
+    assert.is(openTasks.innerText, '0');
 
     todoController.addTodo();
 
-    assert.equals(todoContainer.children.length, 1*elementsPerRow);
-    assert.equals(numberOfTasks.innerText, '1');
-    assert.equals(openTasks.innerText, '1');
+    assert.is(todoContainer.children.length, 1*elementsPerRow);
+    assert.is(numberOfTasks.innerText, '1');
+    assert.is(openTasks.innerText, '1');
 
     todoController.addTodo();
 
-    assert.equals(todoContainer.children.length, 2*elementsPerRow);
-    assert.equals(numberOfTasks.innerText, '2');
-    assert.equals(openTasks.innerText, '2');
+    assert.is(todoContainer.children.length, 2*elementsPerRow);
+    assert.is(numberOfTasks.innerText, '2');
+    assert.is(openTasks.innerText, '2');
 
     const firstCheckbox = todoContainer.querySelectorAll("input[type=checkbox]")[0];
-    assert.equals(firstCheckbox.checked, false);
+    assert.is(firstCheckbox.checked, false);
 
     firstCheckbox.click();
 
-    assert.equals(firstCheckbox.checked, true);
+    assert.is(firstCheckbox.checked, true);
 
-    assert.equals(todoContainer.children.length, 2*elementsPerRow); // did not change
-    assert.equals(numberOfTasks.innerText, '2');                    // did not change
-    assert.equals(openTasks.innerText, '1');                        // changed
+    assert.is(todoContainer.children.length, 2*elementsPerRow); // did not change
+    assert.is(numberOfTasks.innerText, '2');                    // did not change
+    assert.is(openTasks.innerText, '1');                        // changed
 
     // add a test for the deletion of a todo-item
 
@@ -54,22 +59,22 @@ test("todo-crud", assert => {
     const firstDeleteBtn = todoContainer.querySelectorAll("button.delete")[0];
     firstDeleteBtn.click();
 
-    assert.equals(todoContainer.children.length, 1*elementsPerRow);
-    assert.equals(numberOfTasks.innerText, '1');
-    assert.equals(openTasks.innerText, '1');      // remains!
+    assert.is(todoContainer.children.length, 1*elementsPerRow);
+    assert.is(numberOfTasks.innerText, '1');
+    assert.is(openTasks.innerText, '1');      // remains!
 
     // delete an unchecked item
 
     const secondDeleteBtn = todoContainer.querySelectorAll("button.delete")[0];
     secondDeleteBtn.click();
 
-    assert.equals(todoContainer.children.length, 0*elementsPerRow);
-    assert.equals(numberOfTasks.innerText, '0');
-    assert.equals(openTasks.innerText, '0');      // changes
+    assert.is(todoContainer.children.length, 0*elementsPerRow);
+    assert.is(numberOfTasks.innerText, '0');
+    assert.is(openTasks.innerText, '0');      // changes
 
 });
 
-test("todo-memory-leak", assert => {  // variant with remove-me callback
+todoSuite.add("memory-leak", assert => {  // variant with remove-me callback
     const todoController = TodoController();
 
     todoController.onTodoAdd(todo => {
@@ -84,7 +89,7 @@ test("todo-memory-leak", assert => {  // variant with remove-me callback
     }
 });
 
-test("todo-memory-leak-2", assert => {  // variant with listener identity
+todoSuite.add("memory-leak-2", assert => {  // variant with listener identity
     const todoController = TodoController();
 
     todoController.onTodoAdd(todo => {
@@ -102,3 +107,5 @@ test("todo-memory-leak-2", assert => {  // variant with listener identity
         todoController.removeTodo(todo);
     }
 });
+
+todoSuite.run();
