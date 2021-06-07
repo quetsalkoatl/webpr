@@ -18,6 +18,7 @@ Summary of the WEBPR module at the FHNW. There is one file per lecture.
 1. \-
 1. [Modules](week13.md)
 1. [Transpilers](week14.md)
+1. [Crazy JS](week15.md)
 
 ## Remarks
 
