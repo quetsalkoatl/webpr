@@ -72,3 +72,7 @@ The user has to be aware the for ex. `c` depends on `b` and include it beforehan
 - local webserver
 - Bundler (Rollup, Parcel, Webpack, ...)
 - Start browser in debug mode
+
+## Usage
+
+For usage of imports see: imports in [Tests of week 13](../week13/allModuleTests.js)

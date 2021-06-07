@@ -18,3 +18,8 @@ Summary of the WEBPR module at the FHNW. There is one file per lecture.
 1. \-
 1. [Modules](week13.md)
 1. [Transpilers](week14.md)
+
+## Remarks
+
+- There is no module system in my toolbox since I went with Markdown files from the beginning. But I implemented the
+  module system in all the [tests from week 13](../week13/allModuleTests.js).
